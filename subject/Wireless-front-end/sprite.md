@@ -4,7 +4,7 @@
 
 ## 制作雪碧图
 
-首先需要使用雪碧图制作工具来生成雪碧图，gulp、grunt、webpack都有相关工具。关键点是要得到每个子图片在整张雪碧图中的高度、宽度、偏移量以及整张雪碧图的宽度和高度，然后再对这些值做计算转换使其可以适应页面。
+首先需要使用雪碧图制作工具来生成雪碧图，gulp、grunt、webpack都有相关工具。关键是要得到每个子图片在整张雪碧图中的高度、宽度、偏移量以及整张雪碧图的宽度和高度，然后再对这些值做计算转换使其可以适应页面。
 
 下面我将以`webpack`+`webpack-spritesmith`为例来讲解：
 
@@ -85,36 +85,36 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 // CSS
 .icon {
-display: inline-block;
+    display: inline-block;
 }
 
 // HTML
 <i class="icon icon-home"></i>
 */
 @mixin sprite-width($sprite) {
-width: nth($sprite, 5);
+    width: nth($sprite, 5);
 }
 
 @mixin sprite-height($sprite) {
-height: nth($sprite, 6);
+    height: nth($sprite, 6);
 }
 
 @mixin sprite-position($sprite) {
-$sprite-offset-x: nth($sprite, 3);
-$sprite-offset-y: nth($sprite, 4);
-background-position: $sprite-offset-x  $sprite-offset-y;
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
 }
 
 @mixin sprite-image($sprite) {
-$sprite-image: nth($sprite, 9);
-background-image: url(#{$sprite-image});
+    $sprite-image: nth($sprite, 9);
+    background-image: url(#{$sprite-image});
 }
 
 @mixin sprite($sprite) {
-@include sprite-image($sprite);
-@include sprite-position($sprite);
-@include sprite-width($sprite);
-@include sprite-height($sprite);
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
 }
 
 /*
@@ -124,18 +124,19 @@ but can be overridden inside of SCSS
 @include sprites($spritesheet-sprites);
 */
 @mixin sprites($sprites) {
-@each $sprite in $sprites {
-$sprite-name: nth($sprite, 10);
-.#{$sprite-name} {
-@include sprite($sprite);
-}
-}
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .#{$sprite-name} {
+            @include sprite($sprite);
+        }
+    }
 }
 ```
 
+为了在线演示，将背景图片的url改成了在线地址.
 现在我们试着将雪碧图引入：[点击查看代码效果](http://codepen.io/no1024/pen/mAKvrA)
 
-不妨调整浏览器窗口大小，我们发现图片宽高并不能自适应屏幕的宽高.显然我们要将雪碧图的容器宽或高设置成百分比,然后让雪碧图的相关部分填满容器，为了实现这一点，我们需要给背景图片设置一个相对于容器的比例。那么这个比例是多少呢？我们不妨假设是100%；我们需要将
+调整浏览器窗口大小，我们发现图片宽高并不能自适应屏幕的宽高.显然我们要将雪碧图的容器宽或高设置成百分比,然后让雪碧图的相关部分填满容器，为了实现这一点，我们需要给背景图片设置一个相对于容器的比例。那么这个比例是多少呢？我们不妨假设是100%；我们需要将
 
 ```
 @mixin sprite-width($sprite) {
@@ -179,7 +180,8 @@ background-position: $sprite-offset-x  $sprite-offset-y;
 
 结果为（具体改动情况参见代码相关部分）:[点击查看代码效果](http://codepen.io/no1024/pen/mAKvrA?editors=1100)
 
-我们看到通过为背景图片设置`backgroun-size:100% 100%;`后图片刚好填满了容器，这是因为backgroun-size的值为百分比时，它的实际值是相对于父元素的宽高来分别计算的.那么我们该如何来确定这个值应该设置为多少呢？不妨以我们合成的雪碧图中的第一个子图hsx\_1.jpg为例,从雪碧图的样式代码中`$hsx-2-width: 1440px;$hsx-2-height: 900px;` ，我们可以看出它的宽高分别为:1440px、900px。在实际开发中这个图我们是从设计稿上切下来的，那么这张图的父容器的宽高也应该分别是1440px、900px，在要求宽度自适应的情况下，我们会根据页面的总宽度计算出父容器宽度的百分比值。假设页面总高度就是900px，我们来看高度的计算方式。在前面我们已经知道了`backgroun-size:100% 100%;`图片刚好填满容器，我们要的效果是子图hsx\_1.jpg刚好填满容器,这说明整张雪碧图被缩小了，那么我们应该使用`backgroun-size`放大以实现还原，放大的倍数和缩小的倍数相等，要把宽度为x1的图片放入宽度为x2的容器中缩小的倍数应该是x1/x2.在这个例子中就是图片被缩小为原来的`容器的宽度/雪碧图的宽度`，所以我们应该讲雪碧图放大`雪碧图的宽度/容器的宽度`倍才能实现子图hsx\_1.jpg刚好填满容器.所以我们将:
+我们看到通过为背景图片设置`backgroun-size:100% 100%;`后图片刚好填满了容器，这是因为backgroun-size的值为百分比时，它的实际值是相对于父元素的宽高来分别计算的.那么我们该如何来确定这个值应该设置为多少呢？不妨以我们合成的雪碧图中的第一个子图hsx\_1.jpg为例,从雪碧图的样式代码中`$hsx-2-width: 1440px;$hsx-2-height: 900px;` ，我们可以看出它的宽高分别为:1440px、900px。在实际开发中这个图我们是从设计稿上切下来的，那么这张图的父容器的宽高也应该分别是1440px、900px，在要求宽度自适应的情况下，我们会根据页面的总宽度计算出父容器宽度的百分比值。不妨假设我们得到的设计稿页面总高度就是900px，那么父容器的高度就百分比就是100%。
+在这个例子中我们只讨论`backgroun-size`的y值,x值是同样的计算方式。在前面我们已经知道了`backgroun-size:100% 100%;`整张雪碧图刚好填满容器，我们要的效果是子图hsx\_1.jpg刚好填满容器,这说明整张雪碧图被缩小了，那么我们应该使用`backgroun-size`放大以实现还原，放大的倍数和缩小的倍数相等，要把宽度为x1的图片放入宽度为x2的容器中缩小的倍数应该是x1/x2.在这个例子中就是图片被缩小为原来的`容器的宽度/雪碧图的宽度`，所以我们应该讲雪碧图放大`雪碧图的宽度/容器的宽度`倍才能实现子图hsx\_1.jpg刚好填满容器.所以我们将:
 
 ```
 @mixin sprite-size($sprite) {
@@ -210,7 +212,7 @@ $sprite-name: nth($sprite, 10);
 
 html,body {
 width:100%;
-height:900px;
+height:100%;
 background:red;
 }
 .box {
@@ -263,7 +265,7 @@ background-repeate: no-repeat;
 
 不妨调节浏览器的高度，你会发现图片的高度自适应了.
 
-现在我们想引入hsx_2,很快遇到一个问题，针对不同的屏幕高度，在上面的讨论中我们将雪碧图放大到了不同的倍数，所以我们现在要重新的计算雪碧图的偏移量`background-position`值.既然雪碧图的大小是一个比例，那么background-position这个值也应该是一个比例，这个比例怎么计算呢？我们要先明确当其值为百分比时它的实际值的计算方式：
+现在我们想引入hsx_2.jpg,很快遇到一个问题，针对不同的屏幕高度，在上面的讨论中我们的得到到的代码会将雪碧图放大到了不同的倍数，所以我们现在要重新的计算雪碧图的偏移量`background-position`值.既然雪碧图的大小是一个比例，那么background-position这个值也应该是一个比例，这个比例怎么计算呢？我们要先明确当其值为百分比时它的实际值的计算方式：
 
 ```
 background-postion:x y;
