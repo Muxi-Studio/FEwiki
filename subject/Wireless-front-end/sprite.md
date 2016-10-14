@@ -51,7 +51,7 @@
 }
 ```
 
-此时，既然图片的大小是变化的，那么每一部分图片在整张雪碧图中的偏移量也应该是以一个比例来变化的，我们先讨论background-size该如何取值，把下面部分先去掉：
+此时，既然图片的大小是变化的，那么每一部分图片在整张雪碧图中的偏移量也应该是以一个比例来变化的，我们先讨论background-size该如何取值，把下面关于`background-position`部分先去掉：
 
 ```
 @mixin sprite-position($sprite) {
@@ -66,7 +66,7 @@
 <iframe height='223' scrolling='no' src='//codepen.io/no1024/embed/mAKvrA/?height=223&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/no1024/pen/mAKvrA/'>mAKvrA</a> by shengxihu (<a href='http://codepen.io/no1024'>@no1024</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
-我们看到通过为背景图片设置`backgroun-size:100% 100%;`后图片刚好填满了容器，这是因为backgroun-size的值为百分比时，它的实际值是相对于父元素的宽高来分别计算的.那么我们该如何来确定这个值应该设置为多少呢？不妨以我们合成的雪碧图中的第一个子图hsx\_1为例,从雪碧图的样式代码中`$hsx-2-width: 1440px;$hsx-2-height: 900px;` ，我们可以看出它的宽高分别为:1440px、900px。在实际开发中这个图我们是从设计稿上切下来的，那么这张图的父容器的宽高也应该分别是1440px、900px，在要求宽度自适应的情况下，我们会根据页面的总宽度计算出父容器宽度的百分比值。假设页面总宽度就是1680px，我们看宽度的计算方式。在前面我们已经知道了`backgroun-size:100% 100%;`图片刚好填满容器，我们要的效果是子图hsx\_1刚好填满容器,这说明整张雪碧图被缩小了，那么我们应该使用`backgroun-size`放大以实现还原，放大的倍数和缩小的倍数相等，要把宽度为x1的图片放入宽度为x2的容器中缩小的倍数应该是x1/x2.在这个例子中就是图片被缩小为原来的`容器的宽度/雪碧图的宽度`，所以我们应该讲雪碧图放大`雪碧图的宽度/容器的宽度`倍才能实现子图hsx\_1刚好填满容器.所以我们将:
+我们看到通过为背景图片设置`backgroun-size:100% 100%;`后图片刚好填满了容器，这是因为backgroun-size的值为百分比时，它的实际值是相对于父元素的宽高来分别计算的.那么我们该如何来确定这个值应该设置为多少呢？不妨以我们合成的雪碧图中的第一个子图hsx\_1.jpg为例,从雪碧图的样式代码中`$hsx-2-width: 1440px;$hsx-2-height: 900px;` ，我们可以看出它的宽高分别为:1440px、900px。在实际开发中这个图我们是从设计稿上切下来的，那么这张图的父容器的宽高也应该分别是1440px、900px，在要求宽度自适应的情况下，我们会根据页面的总宽度计算出父容器宽度的百分比值。假设页面总高度就是900px，我们看宽度的计算方式。在前面我们已经知道了`backgroun-size:100% 100%;`图片刚好填满容器，我们要的效果是子图hsx\_1.jpg刚好填满容器,这说明整张雪碧图被缩小了，那么我们应该使用`backgroun-size`放大以实现还原，放大的倍数和缩小的倍数相等，要把宽度为x1的图片放入宽度为x2的容器中缩小的倍数应该是x1/x2.在这个例子中就是图片被缩小为原来的`容器的宽度/雪碧图的宽度`，所以我们应该讲雪碧图放大`雪碧图的宽度/容器的宽度`倍才能实现子图hsx\_1.jpg刚好填满容器.所以我们将:
 
 ```
 @mixin sprite-size($sprite) {
@@ -97,7 +97,7 @@ The `sprites` mixin generates identical output to the CSS template
 
 html,body {
   width:100%;
-  height:100%;
+  height:900px;
   background:red;
 }
 .box {
@@ -137,7 +137,7 @@ The `sprites` mixin generates identical output to the CSS template
 
 html,body {
   width:100%;
-  height:100%;
+  height:900px;
   background:red;
 }
 .box {
