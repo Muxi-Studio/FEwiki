@@ -294,7 +294,7 @@ background-position: 0  $sprite-y;
 }
 ```
 
-现在我们引入hsx_2，结果如下:[点击查看代码效果](http://codepen.io/no1024/pen/jrpAaR)
+现在我们引入hsx_2.jpg，结果如下:[点击查看代码效果](http://codepen.io/no1024/pen/jrpAaR)
 
 自此我们实现了雪碧图高度的自适应，宽度的自适应是同样的思考和计算方式.
 
