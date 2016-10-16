@@ -44,7 +44,7 @@ new SpritesmithPlugin({
 })
 ```
 
-做好相关配置后，运行`webpack-spritesmith`会生成一份`_sprite.scss`文件(文件名与配置有关)。我们可以看到在这份文件中自动生成了合并之前的每个单份图片的**尺寸、偏移量、名称、路径**。同时还贴心的给我们写好了`mixin`,这份代码中也**讲解了如何引入雪碧图**。代码示例如下：
+做好相关配置后，运行`webpack-spritesmith`会生成一份`_sprite.scss`文件(文件名与配置有关)。我们可以看到在这份文件中自动生成了合并之前的每个单份图片的**尺寸、偏移量、名称、路径**。同时还贴心的给我们写好了`mixin`,我们在使用的时候只需要引入这份scss文件，然后引入mixin就可以引入图片了，这份代码中也**讲解了如何引入雪碧图**，读者可以查看注释部分。代码示例如下：
 
 ```CSS
 /*
@@ -241,7 +241,7 @@ background-size: x%*父容器的宽度  y%*父容器的高度;
 
 引入子图hsx_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
-我们看到通过为背景图片设置`backgroun-size:100% 100%;`后**整张雪碧图**刚好填满了容器，调整浏览器窗口图片也**能自适应**了，这是符合上面提到的计算方式的。但是我们要的只是**其中的某一个子图来填充容器**，例如子图hsx\_1.png,下面我们讨论`backgroun-size`的y值,x值是同样的计算方式。
+我们看到通过为背景图片设置`backgroun-size:100% 100%;`后**整张雪碧图**刚好填满了容器，调整浏览器窗口图片也**能自适应**了，这是符合上面提到的计算方式的。但是我们要的只是**其中的某一个子图来填充容器**，例如子图hsx\_1,下面我们讨论`backgroun-size`的y值,x值是同样的计算方式。
 
 在前面我们已经知道了`backgroun-size:100% 100%;`整张雪碧图刚好填满容器，我们要的效果是子图hsx\_1刚好填满容器,这说明整张雪碧图被**缩小**了，那么我们应该使用`backgroun-size`**放大以实现还原**，放大的倍数和缩小的倍数相等，要把高度为y1的图片放入高度为y2的容器中缩小的倍数应该是`y1/y2`.在这个例子中就是图片被缩小为原来的`容器的高度/雪碧图的高度`，所以我们应该讲雪碧图放大`雪碧图的高度/容器的高度`倍才能实现子图hsx\_1刚好填满容器.`backgroun-size`的计算方式应该为：
 
@@ -264,21 +264,20 @@ background-size: (雪碧图的宽度/容器的宽度)*100% (雪碧图的高度/�
     $sprite-total-height: nth($sprite, 8);
     background-size: auto  ($sprite-total-height / $box_height) * 100%;
 }
+```
 
+对应的我们也要修改引入mixin的方式：
+
+```
 @mixin sprite($sprite,$box_height) {
-    //修改mixin中引入方式@include sprite-size($sprite)
+    //增加参数$box_height
     @include sprite-size($sprite,$box_height);
     @include sprite-image($sprite);
     @include sprite-width($sprite);
     @include sprite-height($sprite);
 }
-
-html,body {
-    width:100%;
-    height:100%;
-    background:red;
-}
 .box {
+    //增加参数$box_height
     @include sprite($hsx-1,893px);
 }
 ```
