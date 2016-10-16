@@ -6,7 +6,7 @@
 
 CSS雪碧图即CSS Sprite，也有人叫它CSS精灵，是一种CSS图像合并技术，该方法是将小图标和背景图像合并到一张图片上，然后利用css的背景定位`backgroun-size`和`background-position`来控制显示需要显示的图片部分。为了**减少http请求数量，加速网页内容显示**，很多网站的导航栏图标、登录框图片等，使用的并不是<image>标签，而是CSS Sprite雪碧图。
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-10-16%20%E4%B8%8A%E5%8D%881.12.18.png)
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_2.png)
 
 ## 制作雪碧图
 
@@ -176,7 +176,9 @@ but can be overridden inside of SCSS
 ## 无自适应效果的雪碧图
 
 现在我们**不做任何修改**，将雪碧图引入：
+
 引入子图hsx_1：[点击查看代码效果](http://codepen.io/no1024/pen/mAKvrA)
+
 引入子图hsx_2：[点击查看代码效果](http://codepen.io/no1024/pen/jrpAaR/)
 
 调整浏览器窗口大小，我们发现图片宽高并不能自适应屏幕的宽高.显然我们要**将雪碧图的容器宽或高设置成百分比**,然后让雪碧图的相关部分填满容器。下面我们修改一下代码：
@@ -209,6 +211,7 @@ but can be overridden inside of SCSS
 ```
 
 引入子图hsx_1：[点击查看代码效果](http://codepen.io/no1024/pen/BLOoqP)
+
 引入子图hsx_2：[点击查看代码效果](http://codepen.io/no1024/pen/ORoyaw)
 
 现在调整屏幕宽高，我们发现容器的大小自适应屏幕的宽高了，但是图片还没有自适应。
@@ -281,6 +284,7 @@ html,body {
 ```
 
 引入子图hsx_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
+
 引入子图hsx_2：[点击查看代码效果](http://codepen.io/no1024/pen/bwxEGk)
 
 不妨调节浏览器的高度，你会发现子图hsx_1的高度完美自适应了.
@@ -317,7 +321,9 @@ y百分比：background-postion-y实际值/{容器(container)的高度—背景�
 ```
 
 现在我们再来看一下效果:
+
 引入子图hsx_1：[点击查看代码效果](http://codepen.io/no1024/pen/YGOwXZ)
+
 引入子图hsx_2：[点击查看代码效果](http://codepen.io/no1024/pen/KgxVpP)
 
 自此我们实现了雪碧图高度的自适应，宽度的自适应是同样的思考和计算方式.
