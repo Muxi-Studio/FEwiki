@@ -243,7 +243,7 @@ background-size: x%*父容器的宽度  y%*父容器的高度;
 
 我们看到通过为背景图片设置`backgroun-size:100% 100%;`后**整张雪碧图**刚好填满了容器，调整浏览器窗口图片也**能自适应**了，这是符合上面提到的计算方式的。但是我们要的只是**其中的某一个子图来填充容器**，例如子图hsx\_1.png,下面我们讨论`backgroun-size`的y值,x值是同样的计算方式。
 
-在前面我们已经知道了`backgroun-size:100% 100%;`整张雪碧图刚好填满容器，我们要的效果是子图hsx\_1.jpg刚好填满容器,这说明整张雪碧图被**缩小**了，那么我们应该使用`backgroun-size`**放大以实现还原**，放大的倍数和缩小的倍数相等，要把高度为y1的图片放入高度为y2的容器中缩小的倍数应该是`y1/y2`.在这个例子中就是图片被缩小为原来的`容器的高度/雪碧图的高度`，所以我们应该讲雪碧图放大`雪碧图的高度/容器的高度`倍才能实现子图hsx\_1.jpg刚好填满容器.`backgroun-size`的计算方式应该为：
+在前面我们已经知道了`backgroun-size:100% 100%;`整张雪碧图刚好填满容器，我们要的效果是子图hsx\_1刚好填满容器,这说明整张雪碧图被**缩小**了，那么我们应该使用`backgroun-size`**放大以实现还原**，放大的倍数和缩小的倍数相等，要把高度为y1的图片放入高度为y2的容器中缩小的倍数应该是`y1/y2`.在这个例子中就是图片被缩小为原来的`容器的高度/雪碧图的高度`，所以我们应该讲雪碧图放大`雪碧图的高度/容器的高度`倍才能实现子图hsx\_1刚好填满容器.`backgroun-size`的计算方式应该为：
 
 ```
 background-size: (雪碧图的宽度/容器的宽度)*100% (雪碧图的高度/容器的高度)*100%;
@@ -291,7 +291,7 @@ html,body {
 
 ## 图片偏移量自适应（background-position）
 
-在引入hsx_2.jpg,我们看到效果很糟糕，这是因为针对不同的屏幕高度，在上面的讨论中我们的得到到的代码会将**雪碧图放大到了不同的倍数**，然而我们代码中的`background-position`依然是一个**定值**,所以我们现在要重新的计算雪碧图的偏移量`background-position`值.既然雪碧图的大小是一个比例，那么**background-position这个值也应该是一个比例**，这个比例怎么计算呢？我们要先明确当其值为百分比时它的实际值的计算方式：
+在引入hsx_2,我们看到效果很糟糕，这是因为针对不同的屏幕高度，在上面的讨论中我们的得到到的代码会将**雪碧图放大到了不同的倍数**，然而我们代码中的`background-position`依然是一个**定值**,所以我们现在要重新的计算雪碧图的偏移量`background-position`值.既然雪碧图的大小是一个比例，那么**background-position这个值也应该是一个比例**，这个比例怎么计算呢？我们要先明确当其值为百分比时它的实际值的计算方式：
 
 ```CSS
 background-postion:x y;
@@ -309,7 +309,19 @@ x百分比：background-postion-x实际值/{容器(container)的宽度—背景�
 y百分比：background-postion-y实际值/{容器(container)的高度—背景图片的高度}*100%。
 ```
 
-所以求`background-position`的偏移量的代码块为：
+所以求`background-position`的偏移量的代码块：
+
+由：
+
+```CSS
+@mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
+}
+```
+
+改为：
 
 ```CSS
 @mixin sprite-position($sprite,$box_height) {
