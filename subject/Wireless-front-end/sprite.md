@@ -234,6 +234,18 @@ body {
 }
 ```
 
+## 使用background-position调整雪碧图
+
+首先介绍一下使用background-position调整雪碧图位置的原理，非小白可以直接看下一部分。
+
+我们要引入雪碧图张的一张子图作为容器的背景图，我们必须控制只有这个子图显示在容器里，CSS设置背景图的众多属性中有一个属性background-position是设置背景图在容器里面显示位置的,我们称这个值为偏移量，我们只要使用这个属性控制背景图在容器里面的显示位置，刚好使子图出现在容器中，而雪碧图的其它部分刚好不显示。
+
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_3.png)
+
+如果在引入雪碧图过程中不要求自适应的话，那么整张雪碧图和以雪碧图为背景的容器的大小都是固定的，此时background-position值也是固定的数值，`background-position xpos ypos`是数值时，第一个值是水平位置，第二个值是垂直位置，参照点是父元素的左上角 0 0.
+
+如果要求自适应,那么整张雪碧图和以雪碧图为背景的容器的大小都是不固定的.此时背景图片的大小要用`background-size`设置，`background-position`的值也应该是一个比例，这篇文章主要就是讨论这种情况下怎么设置这两个值，我们下文中探讨.
+
 ## 无自适应效果的雪碧图
 
 现在我们**不做任何修改**，将雪碧图引入：
@@ -303,6 +315,8 @@ background-size: x%*容器的宽度  y%*容器的高度;
 }
 ```
 
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
+
 引入子图img_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
 我们看到通过为背景图片设置`backgroun-size:100% 100%;`后**整张雪碧图**刚好填满了容器，`background-size`作用在了整张雪碧图上而不是作用在子图上。我们要的只是**其中的某一个子图来填充容器**。所以我们要思考整张雪碧图上的大小相对于容器的大小。我们知道，生成雪碧图后子图和整张雪碧图都是固定大小的，那么子图的宽高和整张雪碧图的宽高比例是固定的，所以我们当我们设置整张雪碧图的宽高到`(整张雪碧图的宽高/子图的宽高)*100%`，此时子图的宽高刚好等于容器的宽高。即backgroun-size`的计算方式应该为：
@@ -344,11 +358,15 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
 }
 ```
 
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_5.png)
+
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
+
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_4.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/bwxEGk)
 
-不妨调节浏览器的高度，你会发现子图img\_1的高度完美自适应了，但是子图img\_1并不能正常引入.
+不妨调节浏览器的高度，你会发现子图img\_1的高度完美自适应了，但是子图img\_2并不能正常引入.
 
 ## 图片偏移量自适应（background-position）
 
@@ -395,7 +413,11 @@ y百分比：background-postion-y实际值/{容器(container)的高度—背景�
 
 现在我们再来看一下效果:
 
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
+
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/YGOwXZ)
+
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_7.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/KgxVpP)
 
