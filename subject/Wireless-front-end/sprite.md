@@ -315,7 +315,7 @@ background-size: x%*容器的宽度  y%*容器的高度;
 }
 ```
 
-![sprite合成图片-2](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_5.png)
 
 引入子图img_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
@@ -357,8 +357,6 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
     @include sprite($img-1,893px);
 }
 ```
-
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_5.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
 
@@ -417,7 +415,7 @@ y百分比：background-postion-y实际值/{容器(container)的高度—背景�
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/YGOwXZ)
 
-![sprite合成图片-6](http://oev2d4dz7.bkt.clouddn.com/sprite_7.png)
+![sprite合成图片-6](http://oev2d4dz7.bkt.clouddn.com/sprite_7.jpg)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/KgxVpP)
 
