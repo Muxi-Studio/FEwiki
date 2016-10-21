@@ -6,7 +6,7 @@
 
 CSS雪碧图即CSS Sprite，也有人叫它CSS精灵，是一种CSS图像合并技术，该方法是将小图标和背景图像合并到一张图片上，然后利用css的背景定位`backgroun-size`和`background-position`来控制显示需要显示的图片部分。为了**减少http请求数量，加速网页内容显示**，很多网站的导航栏图标、登录框图片等，使用的并不是`<img>`标签，而是CSS Sprite雪碧图。
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_2.png)
+![sprite合成图片-1](http://oev2d4dz7.bkt.clouddn.com/sprite_2.png)
 
 ## 制作雪碧图
 
@@ -315,7 +315,7 @@ background-size: x%*容器的宽度  y%*容器的高度;
 }
 ```
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
+![sprite合成图片-2](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
 
 引入子图img_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
@@ -358,11 +358,11 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
 }
 ```
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_5.png)
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_5.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_4.png)
+![sprite合成图片-4](http://oev2d4dz7.bkt.clouddn.com/sprite_4.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/bwxEGk)
 
@@ -413,11 +413,11 @@ y百分比：background-postion-y实际值/{容器(container)的高度—背景�
 
 现在我们再来看一下效果:
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
+![sprite合成图片-5](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/YGOwXZ)
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_7.png)
+![sprite合成图片-6](http://oev2d4dz7.bkt.clouddn.com/sprite_7.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/KgxVpP)
 
