@@ -258,11 +258,7 @@ body {
 
 现在我们**不做任何修改**，将雪碧图引入：
 
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_10.png)
-
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/mAKvrA)
-
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_9.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/jrpAaR/)
 
@@ -297,7 +293,11 @@ body {
 }
 ```
 
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_10.jpg)
+
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/BLOoqP)
+
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_9.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/ORoyaw)
 
