@@ -132,24 +132,32 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 <i class="icon icon-home"></i>
 */
 
-//定义一个使用雪碧图的宽度值的width属性
+/*
+定义一个使用雪碧图的宽度值的width属性
+ */
 @mixin sprite-width($sprite) {
     width: nth($sprite, 5);
 }
 
-//定义一个使用雪碧图的高度值的height属性
+/*
+定义一个使用雪碧图的高度值的height属性
+ */
 @mixin sprite-height($sprite) {
     height: nth($sprite, 6);
 }
 
-//使用子图偏移量来设置background-position的值
+/*
+使用子图偏移量来设置background-position的值
+ */
 @mixin sprite-position($sprite) {
     $sprite-offset-x: nth($sprite, 3);
     $sprite-offset-y: nth($sprite, 4);
     background-position: $sprite-offset-x  $sprite-offset-y;
 }
 
-//定义雪碧图的路径
+/*
+定义雪碧图的路径
+ */
 @mixin sprite-image($sprite) {
     $sprite-image: nth($sprite, 9);
     background-image: url(#{$sprite-image});
@@ -159,13 +167,13 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 把上面的代码块导入到名为sprite的mixin中，使用时导入这个代码块就同时配置了背景图片的路径、显示位置、宽度、高度
 */
 @mixin sprite($sprite) {
-    //定义雪碧图的路径
+    /*定义雪碧图的路径*/
     @include sprite-image($sprite);
-    //使用background-position来让雪碧图只显示某个特定部分
+    //使用background-position来让雪碧图只显示某个特定部分*/
     @include sprite-position($sprite);
-    //定义使用雪碧图的容器的宽度
+    //定义使用雪碧图的容器的宽度*/
     @include sprite-width($sprite);
-    //定义使用雪碧图的容器的高
+    //定义使用雪碧图的容器的高*/
     @include sprite-height($sprite);
 }
 
@@ -212,24 +220,24 @@ body {
 如果在某个地方需要使用雪碧图作为背景，我们只要引入这份SCSS文件，然后再使用它的地方导入mixin就可以了。例如有如下的HTML结构需要使用雪碧图作为背景：
 
 ```
-//这个div需要使用img_1.png作为背景图片.
+/*这个div需要使用img_1.png作为背景图片.*/
 <div class="icon_img_1"></div>
 ```
 
 我们只需要在这样写SCSS就可以实现：
 
 ```
-//假设雪碧图生成的SCSS文件的相对路径是_sprite.scss.
-//引入雪碧图生成的SCSS文件
+/*假设雪碧图生成的SCSS文件的相对路径是_sprite.scss.
+/*引入雪碧图生成的SCSS文件*/
 @import url('./scss/_sprite.scss')
 
-//导入mixin
+/*导入mixin*/
 .icon_img_1 {
     /*
     其他定义类名为icon_img_1的div样式的SCSS代码
      */
     
-    //参数为以美元符号开头的去掉后缀的子图片文件名
+    /*参数为以美元符号开头的去掉后缀的子图片文件名*/
     @include sprite($img_1)
 }
 ```
@@ -346,14 +354,14 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
 
 ```scss
 @mixin sprite($sprite,$img_height) {
-    //增加参数$img_height
+    /*增加参数$img_height*/
     @include sprite-size($sprite,$img_height);
     @include sprite-image($sprite);
     @include sprite-width($sprite);
     @include sprite-height($sprite);
 }
 .box {
-    //增加参数$img_height
+    /*增加参数$img_height*/
     @include sprite($img-1,893px);
 }
 ```
