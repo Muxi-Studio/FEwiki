@@ -369,6 +369,7 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
     @include sprite($img-1,893px);
 }
 ```
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
 
