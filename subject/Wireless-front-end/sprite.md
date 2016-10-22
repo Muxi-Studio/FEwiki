@@ -248,7 +248,7 @@ body {
 
 我们要引入雪碧图张的一张子图作为容器的背景图，我们必须控制只有这个子图显示在容器里，CSS设置背景图的众多属性中有一个属性background-position是设置背景图在容器里面显示位置的,我们称这个值为偏移量，我们只要使用这个属性控制背景图在容器里面的显示位置，刚好使子图出现在容器中，而雪碧图的其它部分刚好不显示。
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_3.jpg)
+![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_3.png)
 
 如果在引入雪碧图过程中不要求自适应的话，那么整张雪碧图和以雪碧图为背景的容器的大小都是固定的，此时background-position值也是固定的数值，`background-position: xpos ypos`是数值时，第一个值是水平位置，第二个值是垂直位置，参照点是父元素的左上角 0 0.
 
