@@ -327,7 +327,7 @@ background-size: x%*容器的宽度  y%*容器的高度;
 }
 ```
 
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
+![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
 
 引入子图img_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
