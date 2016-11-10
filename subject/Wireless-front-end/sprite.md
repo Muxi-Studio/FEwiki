@@ -6,7 +6,7 @@
 
 CSS雪碧图即CSS Sprite，也有人叫它CSS精灵，是一种CSS图像合并技术，该方法是将小图标和背景图像合并到一张图片上，然后利用css的背景定位`backgroun-position`和`background-size`来控制显示需要显示的图片部分。为了**减少http请求数量，加速网页内容显示**，很多网站的导航栏图标、登录框图片等，使用的并不是`<img>`标签，而是CSS Sprite雪碧图。
 
-![sprite合成图片-1](http://oev2d4dz7.bkt.clouddn.com/sprite_2.png)
+![sprite合成图片-1](http://res.cloudinary.com/da4uixfcu/image/upload/v1478744586/u9z0nzc5s3s4g7ja27uf.png)
 
 ## 制作雪碧图
 
@@ -248,7 +248,7 @@ body {
 
 我们要引入雪碧图张的一张子图作为容器的背景图，我们必须控制只有这个子图显示在容器里，CSS设置背景图的众多属性中有一个属性background-position是设置背景图在容器里面显示位置的,我们称这个值为偏移量，我们只要使用这个属性控制背景图在容器里面的显示位置，刚好使子图出现在容器中，而雪碧图的其它部分刚好不显示。
 
-![sprite合成图片](http://oev2d4dz7.bkt.clouddn.com/sprite_3.png)
+![sprite合成图片-2](http://res.cloudinary.com/da4uixfcu/image/upload/v1478744586/u9z0nzc5s3s4g7ja27uf.png)
 
 如果在引入雪碧图过程中不要求自适应的话，那么整张雪碧图和以雪碧图为背景的容器的大小都是固定的，此时background-position值也是固定的数值，`background-position: xpos ypos`是数值时，第一个值是水平位置，第二个值是垂直位置，参照点是父元素的左上角 0 0.
 
@@ -300,11 +300,11 @@ height:设计图中图片的的高度/图片所在页面的高度
 }
 ```
 
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_10.jpg)
+![sprite合成图片-3](http://res.cloudinary.com/da4uixfcu/image/upload/v1478744787/jesf6spf2r9tuqpjppvg.jpg)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/BLOoqP)
 
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_9.png)
+![sprite合成图片-4](http://res.cloudinary.com/da4uixfcu/image/upload/v1478744879/bmmhimkj8gati5vjgf9l.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/ORoyaw)
 
@@ -334,7 +334,7 @@ background-size: x%*容器的宽度  y%*容器的高度;
 }
 ```
 
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_6.png)
+![sprite合成图片-5](http://res.cloudinary.com/da4uixfcu/image/upload/v1478745366/sfc2fokc8jcvxpku8ytn.png)
 
 引入子图img_1：[点击查看效果](http://codepen.io/no1024/pen/mAGZgx)
 
@@ -376,11 +376,11 @@ background-size: (雪碧图的宽度/子图的宽度)*100% (雪碧图的高度/�
     @include sprite($img-1,893px);
 }
 ```
-![sprite合成图片-3](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
+![sprite合成图片-6](http://res.cloudinary.com/da4uixfcu/image/upload/v1478745545/vp2tjvkeom75qahcltof.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/xEakxq)
 
-![sprite合成图片-4](http://oev2d4dz7.bkt.clouddn.com/sprite_4.jpg)
+![sprite合成图片-7](http://res.cloudinary.com/da4uixfcu/image/upload/v1478745777/mhvopunmcuwmyvssffr4.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/bwxEGk)
 
@@ -431,11 +431,11 @@ y百分比：background-postion-y实际值/{容器(container)的高度—背景�
 
 现在我们再来看一下效果:
 
-![sprite合成图片-5](http://oev2d4dz7.bkt.clouddn.com/sprite_8.png)
+![sprite合成图片-8](http://res.cloudinary.com/da4uixfcu/image/upload/v1478745915/rc9amrquhgxtokcm0x6u.png)
 
 引入子图img_1：[点击查看代码效果](http://codepen.io/no1024/pen/YGOwXZ)
 
-![sprite合成图片-6](http://oev2d4dz7.bkt.clouddn.com/sprite_7.jpg)
+![sprite合成图片-9](http://res.cloudinary.com/da4uixfcu/image/upload/v1478745876/sq3jkq7c7kfdrvxghpqu.png)
 
 引入子图img_2：[点击查看代码效果](http://codepen.io/no1024/pen/KgxVpP)
 
