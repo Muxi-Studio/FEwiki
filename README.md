@@ -27,7 +27,7 @@
 + JavaScript与函数式编程
 + 如何阅读CSS与ECMAScript规范
 + JavaScript并发解决方案
-+ [无线前端专题](subject/Wireless-front-end/sprite.md)
++ [无线前端专题](subject/Wireless-front-end/)
 + 如何看待JavaScript设计模式
 + 源码阅读专题
 + 移动端Web中的CSS
