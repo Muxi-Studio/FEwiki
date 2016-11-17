@@ -8,7 +8,7 @@
 
 我们能够想到的最简单的方案就是百分比布局了。各级元素的宽度都设成百分比以实现在水平方向上适应各种屏幕宽度的显示效果，我们先来看一个demo。
 
-<a href="http://codepen.io/no1024/pen/mOPNvd" alt="demo-1"><img src="http://oev2d4dz7.bkt.clouddn.com/demo_3.gif"/></a>
+<a href="http://codepen.io/no1024/pen/mOPNvd" alt="demo-1"><img src="http://res.cloudinary.com/da4uixfcu/image/upload/v1479347646/p4r6suuzcykfev1aiapx.gif"/></a>
 
 我们看到通过宽度设置百分比我们很容易的让页面中的元素实现了宽度自适应，那么高度怎么办呢？通常在开发过程中我们需要实际设置高度的情况比较少，限定高度值是一种不是很合理的实现。在实际开发过程中我们一般让高度由文字或者图片（img标签的高度会随宽度的值自动调整）撑开，当然也有例外的情况，比如我们使用背景图片代替img标签时，就需要我们手动设置高度的值了，如果设置不合理，图片显示的宽高比就会发生改变，改变浏览器的大小，我们会看到demo中图片显示的效果：
 
@@ -86,7 +86,7 @@ CSS3 弹性盒子(Flexible Box 或 Flexbox)提供了一种全新的布局方式�
 
 我们来看下兼容性：
 
-![rem兼容性](http://oev2d4dz7.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-11-15%2010.28.37.png)
+![rem兼容性](http://res.cloudinary.com/da4uixfcu/image/upload/v1479347727/ssvs1orku8p5lmgokued.png)
 
 
 我们看到所有主流浏览器都兼容了，可以放心大胆的使用。
