@@ -27,7 +27,15 @@
 + JavaScript与函数式编程
 + 如何阅读CSS与ECMAScript规范
 + JavaScript并发解决方案
-+ [无线前端专题](subject/Wireless-front-end/)
++ [无线前端-——雪碧图](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/sprite.md)
++ [无线前端-——移动端页面布局](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/mobile-layout.md)
 + 如何看待JavaScript设计模式
 + 源码阅读专题
 + 移动端Web中的CSS
+
+
+#### Mini Tip
+
++ `.vue`文件的Sublime插件配置
++ 在Vue-loader中使用CSS Modules
++ 关于Chrome Devtools的Timeline
