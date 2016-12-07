@@ -22,6 +22,7 @@
 + 浏览器渲染引擎和JavaScript引擎相关
 + 如何看待常见的前端框架（Vue, React, Angular）
 + 页面加载速度专题
+  + [页面性能优化](https://github.com/stephenLYao/FEwiki/blob/master/subject/Web-Performance-Analysis/页面性能优化.md)
 + 如何部署前端代码
 + 前端资源和书籍
 + JavaScript与函数式编程
