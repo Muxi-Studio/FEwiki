@@ -13,33 +13,38 @@
 
 ### 索引
 
++ [木犀前端团队（MFE）基本情况](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/muxife.md)
++ 前端业务的典型类型与技术选型
 + 木犀前端代码规范
 + 前后端分离开发
  + 木犀前后端分离方案（鹊桥）
  + 木犀前端工具-本地开发容器（Ninja）
 + [推荐的CSS布局方案](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/css-layout.md)
-+ 浏览器兼容性专题
 + 浏览器渲染引擎和JavaScript引擎相关
 + [前端框架设计（Vue, React, Angular）](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/fe-framework.md)
-+ 关于性能
-  + [页面性能优化](https://github.com/stephenLYao/FEwiki/blob/master/subject/Web-Performance-Analysis/页面性能优化.md)
++ [关于性能-综述](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Web-Performance-Analysis/performance.md)
+  + [页面性能优化](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Web-Performance-Analysis/页面性能优化.md)
   + JavaScript性能优化
   + 应用性能优化
 + 如何部署前端代码（前端自动化部署）
 + 前端资源和书籍
 + JavaScript与函数式编程
 + 如何阅读CSS与ECMAScript规范
++ Promise+Fetch专题
 + JavaScript并发解决方案
 + [无线前端-—雪碧图](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/sprite.md)
 + [无线前端-—移动端页面布局](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/mobile-layout.md)
 + 如何看待JavaScript设计模式
 + 移动端Web中的CSS
++ 前端安全
++ 前端动画（CSS、JS+SVG、Canvas）
++ 浏览器渲染引擎相关（动画的GPU加速）
 + [前端MVC框架设计-以Backbone为例](https://github.com/jsrebuild/javascript-framework-design)
 + [前端MVVM框架设计-以Vuejs为例](https://github.com/jsrebuild/build-your-own-vuejs)
 
 
 #### Mini Tip
 
-+ `.vue`文件的Sublime插件配置
-+ 在Vue-loader中使用CSS Modules
-+ 关于Chrome Devtools的Timeline
++ [`.vue`文件的Sublime插件配置]()
++ [在Vue-loader中使用CSS Modules](http://zxc0328.github.io/2016/11/29/timeline/)
++ [关于Chrome Devtools的Timeline](http://zxc0328.github.io/2016/11/29/timeline/)
