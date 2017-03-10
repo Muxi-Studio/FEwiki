@@ -14,17 +14,18 @@
 ### 索引
 
 + 木犀前端代码规范
-+ 木犀前后端分离方案（鹊桥）
-+ 木犀前端工具（Ninja）
-+ 推荐的CSS布局方案
++ 前后端分离开发
+ + 木犀前后端分离方案（鹊桥）
+ + 木犀前端工具-本地开发容器（Ninja）
++ [推荐的CSS布局方案](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/css-layout.md)
 + 浏览器兼容性专题
 + 浏览器渲染引擎和JavaScript引擎相关
-+ [前端框架设计（Vue, React, Angular）]()
++ [前端框架设计（Vue, React, Angular）](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/fe-framework.md)
 + 关于性能
   + [页面性能优化](https://github.com/stephenLYao/FEwiki/blob/master/subject/Web-Performance-Analysis/页面性能优化.md)
   + JavaScript性能优化
   + 应用性能优化
-+ 如何部署前端代码
++ 如何部署前端代码（前端自动化部署）
 + 前端资源和书籍
 + JavaScript与函数式编程
 + 如何阅读CSS与ECMAScript规范
@@ -32,9 +33,9 @@
 + [无线前端-—雪碧图](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/sprite.md)
 + [无线前端-—移动端页面布局](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/Wireless-front-end/mobile-layout.md)
 + 如何看待JavaScript设计模式
-+ 源码阅读专题
 + 移动端Web中的CSS
-+ [前端MVC框架设计](https://github.com/jsrebuild/javascript-framework-design)
++ [前端MVC框架设计-以Backbone为例](https://github.com/jsrebuild/javascript-framework-design)
++ [前端MVVM框架设计-以Vuejs为例](https://github.com/jsrebuild/build-your-own-vuejs)
 
 
 #### Mini Tip
