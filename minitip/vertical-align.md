@@ -1,4 +1,4 @@
-##Vertical-align专题##
+## Vertical-align专题
 
 - [最佳实践之多个高度不定水平实体垂直居中](http://zxc0328.github.io/2015/07/23/vertical-align-middle/)
 

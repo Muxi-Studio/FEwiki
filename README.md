@@ -48,3 +48,4 @@
 + [`.vue`文件的Sublime插件配置]()
 + [在Vue-loader中使用CSS Modules](http://zxc0328.github.io/2016/11/29/timeline/)
 + [关于Chrome Devtools的Timeline](http://zxc0328.github.io/2016/11/29/timeline/)
++ [vertical-align专题](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/vertical-align.md)
