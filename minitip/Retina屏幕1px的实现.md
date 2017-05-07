@@ -121,11 +121,14 @@ document.querySelector('head').appendChild(link);
 ##### 方法三 box-shadow
 利用CSS对阴影处理的方式实现
 `-webkit-box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);`
+
 优点是基本所有场景都能满足，包含圆角的button，单条，多条线。
+
 缺点是颜色不好处理， 黑色 rgba(0,0,0,1) 是最浓的情况，而且有阴影出现。
 
 ##### 方法四 background-image背景渐变实现
 通过CSS修改image，设置图片50%有颜色，50%透明，实现1px的效果。
+
  `linear-gradient`属性一个表示颜色线性渐变的 image，语法是`linear-gradient([ [ [ <angle>| to[top | bottom] || [left | right] ],]? <color-stop>[, <color-stop>]+);`详细讲解看[MDN文档](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
  
 ```
