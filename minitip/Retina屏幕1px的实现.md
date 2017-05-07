@@ -1,28 +1,32 @@
 ### 一些基本概念
-** viewport 视窗 **
+**viewport 视窗**
 
 在桌面浏览器中，viewport就是浏览器窗口的宽度高度。但在移动端设备上，假如没有viewport，移动端会采用桌面版的屏幕宽度，然后适应屏幕进行缩放。设置viewport可以控制页面的宽度并且在不同的设备上进行缩放。
 （A viewport controls how a webpage is displayed on a mobile device. Without a viewport, mobile devices will render the page at a typical desktop screen width, scaled to fit the screen. Setting a viewport gives control over the page's width and scaling on different devices.）
 
 移动端提供了两个viewport，虚拟的viewport：visual viewport和布局的viewport：layout viewport。[Stack Overflow上有深入的讲解。](http://stackoverflow.com/questions/6333927/difference-between-visual-viewport-and-layout-viewport)
 
-** 物理像素 & 设备独立像素 & CSS像素 **
-** 物理像素 **又被称为设备像素，他是显示设备中一个最微小的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度。
+**物理像素 & 设备独立像素 & CSS像素**
 
-** 设备独立像素 **也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，然后由相关系统转换为物理像素。
+**物理像素**又被称为设备像素，他是显示设备中一个最微小的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度。
 
-**CSS设置的像素值（px）**属于普通像素点，或者是标准像素点。CSS像素是一个抽像的单位，主要使用在浏览器上，用来精确度量Web页面上的内容。一般情况之下，CSS像素称为与设备无关的像素(device-independent pixel)，简称DIPs。
+**设备独立像素**也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，然后由相关系统转换为物理像素。
 
-** devicePixelRatio 设备像素比 **
+**CSS设置的像素值(px)** 属于普通像素点，或者是标准像素点。CSS像素是一个抽像的单位，主要使用在浏览器上，用来精确度量Web页面上的内容。一般情况之下，CSS像素称为与设备无关的像素(device-independent pixel)，简称DIPs。
+
+**devicePixelRatio 设备像素比**
+
 设备像素比简称为dpr，其定义了物理像素和设备独立像素的对应关系。它的值可以按下面的公式计算得到：
 > 设备像素比 ＝ 物理像素 / 设备独立像素
 
-** 高清屏和普通屏幕 **
+**高清屏和普通屏幕**
+
 高清屏和普通屏来做对比就是普通屏幕的1个像素点就是1个物理像素点，而高清屏的1个像素点是4个物理像素点。
 通过计算 devicePixelRatio 的值，可以区分普通显示屏和高清显示器，当devicePixelRatio值等于1时（也就是最小值），那么它是普通显示屏，当devicePixelRatio值大于1(通常是1.5、2.0)，那么它就是高清显示屏。
 比如iPhone6的devicePixelRatio为2，所以是高清显示屏。iPhone6s plus这种高清屏dpr是3。
 
-** REM **
+**REM**
+
 REM就是相对于根元素<html>的font-size来做计算。因为网页<html>的默认字体大小是 16px，所以
  > 1rem=16px ，10rem=160px
 
@@ -30,8 +34,10 @@ REM就是相对于根元素<html>的font-size来做计算。因为网页<html>�
 -----
 ### Retina屏幕1px产生的问题
 因为viewport的设置和屏幕物理分辨率是按比例而不是相同的，<meta>标签里实际上是设置了ideal viewport的宽度，而不同手机的ideal viewport宽度是不一样的。移动端window对象有devicePixelRatio属性，CSS里写1px的边框在devicePixelRatio = 2的Retina屏下会显示成2px。
+
 ![1px的效果](http://upload-images.jianshu.io/upload_images/4938344-40592fda54568184.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![1px被显示成2px](http://upload-images.jianshu.io/upload_images/4938344-72d1355fcd358aa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 图片来自[Retina屏的移动设备如何实现真正1px的线？](http://jinlong.github.io/2015/05/24/css-retina-hairlines/)
 
 -----
@@ -43,8 +49,10 @@ REM就是相对于根元素<html>的font-size来做计算。因为网页<html>�
 
 devicePixelRatio=2的时候，控制viewport的initial-scale值为0.5进行缩放
 `<meta name="viewport" content="initial-scale=0.5, user-scalable=no"/>`
+
 devicePixelRatio=3的时候，
 `<meta name="viewport" content="initial-scale=0.333333, user-scalable=no"/>`
+
 Android下不支持initial-scale，虽然这不适用于安卓, 但它里面的这一段代码可以用来做对安卓机的部署.
 ```
     if (!dpr && !scale) {
@@ -65,16 +73,19 @@ Android下不支持initial-scale，虽然这不适用于安卓, 但它里面的�
         dpr = 1;
     }
     scale = 1 / dpr;
-}```
+}
+```
 
 
 对于安卓机做检测，动态加载CSS
+
 ```
 var link = document.createElement('link');
 link.setAttribute("rel","stylesheet");
 link.setAttribute("type","text/css");
 link.setAttribute("href",".......Android.css");
-document.querySelector('head').appendChild(link);```
+document.querySelector('head').appendChild(link);
+```
 
 这个方案结合了viewport和rem，所以使用的时候要考虑到REM布局。另外，REM布局下字体的单位仍建议使用px，还有出现1px像素线的地方，也仍旧使用border-width:1px;而不是border-width:.1rem;
 
@@ -89,8 +100,10 @@ document.querySelector('head').appendChild(link);```
 .img{/* 高清显示屏(设备像素比例大于等于1.5)使用二倍图  */
     background-image: url(img_2x.png);
   }
-}```
+}
+```
 据说IOS8以上CSS可以用小数点，理论上可以这样写。
+
 ```
 .border {
  border: 1px solid #ffffff;
@@ -100,7 +113,9 @@ document.querySelector('head').appendChild(link);```
 }
 @media screen and (-webkit-min-device-pixel-ratio: 3) {
     .border { border: 0.333333px solid #ffffff; }
-}```
+}
+```
+
 但是由于安卓与低版本IOS不适用，所以不推荐这种写法。
 
 ##### 方法三 box-shadow
@@ -112,6 +127,7 @@ document.querySelector('head').appendChild(link);```
 ##### 方法四 background-image背景渐变实现
 通过CSS修改image，设置图片50%有颜色，50%透明，实现1px的效果。
  `linear-gradient`属性一个表示颜色线性渐变的 image，语法是`linear-gradient([ [ [ <angle>| to[top | bottom] || [left | right] ],]? <color-stop>[, <color-stop>]+);`详细讲解看[MDN文档](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
+ 
 ```
 .border {
       background-image: linear-gradient(180deg, red, red 50%, transparent 50%),
@@ -122,17 +138,20 @@ document.querySelector('head').appendChild(link);```
       background-repeat: no-repeat;
       background-position: top, right top,  bottom, left top;
       padding: 10px;
-  }```
+  }
+```
 这个方法代码量大，而且无法实现边框的圆角效果。
 
 ##### 方法五 border-image
 ![6X6的图片](http://upload-images.jianshu.io/upload_images/4938344-0320e1b1f4cde23b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-图片可以是gif、png、base 64，
+图片可以是gif、png、base 64
+
 ```
 .border{
     border-width: 1px;
     border-image: url(border.png) 2 repeat;
-}```
+}
+```
 缺点
 - 想要实现圆角效果的话要放大修改图片
 - 边框颜色不方便修改
@@ -145,7 +164,8 @@ document.querySelector('head').appendChild(link);```
 ```
 if(window.devicePixelRatio && devicePixelRatio >= 2){
     document.querySelector('.box').className += 'box1';
-}```
+}
+```
 看一下demo代码：
 ```
 .box {
@@ -171,7 +191,8 @@ if(window.devicePixelRatio && devicePixelRatio >= 2){
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
     z-index: -1;
-}```
+}
+```
 
 :before和:after 是用来给指定的元素的内容前面或后面插入新的内容。给`:before`添加了属性 `content`并设置为空（对于伪元素 :before 和 :after 而言，属性 content 是必须设置的否则伪元素不会生效），然后给它设置我需要的样式的两倍大小，再设置` transform: scale(0.5);`就实现了1px的效果。像这里的demo代码，我的box里面有input，所以要设置`index`，否则input就会被覆盖。
 
