@@ -48,3 +48,6 @@
 + [`.vue`文件的Sublime插件配置]()
 + [在Vue-loader中使用CSS Modules](http://zxc0328.github.io/2016/11/29/timeline/)
 + [关于Chrome Devtools的Timeline](http://zxc0328.github.io/2016/11/29/timeline/)
+
+#### Tutorial
++ [react不完全指南](https://github.com/Muxi-Studio/FEwiki/blob/master/tutorial/react/)
