@@ -149,19 +149,119 @@ export default{
 
 ### How?
 
-## 合理使用data和props
+## 规范使用props
 
-对组件的数据进行分类，其中组件自身的内部状态是data，从父组件传递而来的数据则是props。对于props，要进行类型的校验，并且限制props的类型为原始类型。
+> **关于data和props**：对组件的数据进行分类，其中组件自身的**内部状态**是data，从父组件传递而来的数据则是props。比如一个计数器的数值是data，而初始值则是props。data是由组件生命周期开始时被初始化（这个初始值可以来源于props，也可以是组件自身提供的默认值），在后续的周期中响应用户交互，发生变化，然后驱动UI变化的状态。而props的变化（如果使用了动态props绑定），也会驱动UI变化。但区别就是这个状态是来自于父组件的（其实props一般就是组件树上某个祖先组件的data）。
+
+props相当于是在组件初始化时，从外部传入的数据。也就是这个组件的API（应用编程接口）。
+
+prop的使用规范主要是：
+
++ 要进行类型的校验（借助Vuejs提供的props校验）。
++ 限制props的类型为原始类型，避免传入一个配置项hash。
+
+> 这条规范的内容借鉴了
 
 ### Why?
 
++ 因为props是组件的API，因此在使用组件时，在模板声明时分别传入各个props比传入一个配置对象在代码可读性上要更清晰。
++ 同样的，作为组件的API，必须要对使用者传入的参数做校验，以防不正确的参数数据类型会使得组件不能正常工作（JavaScript是弱类型，props的类型声明类似函数的参数类型声明）。
+
 ### How?
+
+```
+<!-- 推荐，分别传入原始类型参数 -->
+<range-slider
+  :values="[10, 20]"
+  min="0"
+  max="100"
+  step="5"
+  :on-slide="updateInputs"
+  :on-end="updateResults">
+</range-slider>
+
+<!-- 禁止：传入一个复杂的配置对象 -->
+<range-slider :config="complexConfigObject"></range-slider>
+```
+
+```
+<template>
+  <input type="range" v-model="value" :max="max" :min="min">
+</template>
+<script type="text/javascript">
+  export default {
+    props: {
+      max: {
+        type: Number, // 对prop作类型声明
+        default() { return 10; },
+      },
+      min: {
+        type: Number,
+        default() { return 0; },
+      },
+      value: {
+        type: Number,
+        default() { return 4; },
+      },
+    },
+  };
+</script>
+```
 
 ## 使用组合进行代码复用
 
+在前端工程中，代码复用主要是由**组合（Composition）**来达成的。我们在写Vuejs组件时应该时刻注意当前的代码是不是可以通过组合的方式来进行复用。
+
+在Vuejs中进行代码复用的方法主要有两种：
+
+一种是组件的**“嵌套”**。类似HTML中元素的嵌套。Vuejs的组件可以在模板中声明slot，在组件被调用时，可以向slot中传入任意的模板。这样就可以达成类似HTML中元素嵌套的效果。事实上Vuejs的slot API就是按[Web Components中的标准]()来实现的。
+
+另一种是**Mixin**。Mixin其实就是把一个对象的属性和方法复制到另一个对象上，同名覆盖。
+
+比如Vuejs中每个组件都有事件的API，就是通过Mixin组合的。又或者两个功能相似的同类型组件，比如两个ListView组件，API和数据都相同，但模板不同。我们就可以把相同的部分（data和methods）抽到一个Mixin中，在定义具体的桌面或者移动端ListView时mixin不同的包含template属性的对象。Mixin是在运行时进行的组合，只要最后组合出来的组件配置对象包含了必要的各个属性，Mixin就是可行的。因此Mixin抽象的粒度是比较自由的。
+
+
+
 ### Why?
 
++ [Composition over Inheritance](https://www.youtube.com/watch?v=wfMtDGfHWpA)
++ 更具体的理由有待大家补充。React和Vue都非常提倡组合，React还有高阶组件那样的大杀器。所以我认为Composition over Inheritance在UI开发中是有实际的工程意义的。
+
 ### How?
+
+```
+const ListViewMixin = {
+  data () {
+    return {
+      items: []
+    }
+  },
+
+  methods: {
+    foo () {
+
+    }
+  }
+}
+
+export default MenuMixin
+```
+
+```
+<template>
+  <ul class="mobile">
+    <li v-for="item in items">{{ item.title }}</li>
+  </ul>  
+</template>
+
+<script>
+  import ListViewMixin from './ListViewMixin'
+  //使用ListViewMixin和这个组件组合成一个移动端的ListView
+  export default {
+    mixins: [ListView]
+  }
+</script>
+```
 
 ## 在列表中加入key
 
@@ -170,4 +270,14 @@ export default{
 ### How?
 
 ## 分离静态HTML
+
+### Why?
+
+### How?
+
+
+## 其他
+
+
+
 
