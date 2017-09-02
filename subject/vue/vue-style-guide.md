@@ -84,13 +84,74 @@ Vuejs的核心理念就是数据驱动的视图。我们在ViewModel中主要做
 
 ## 抽离浏览器API操作
 
+在组件的生命周期函数或者方法中，有时候需要进行网络请求，或者使用BOM API（比如读取localStorage）。所以我们需要将这些操作分拆、封装到对应的模块里。
+
+### Why?
+
++ Separation of Concern。在ViewModel只对数据进行操作。隐藏一些与数据驱动无关的实现细节。
+
+### How?
+
+*cookie.js*
+
+```
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString() + ";path = /";
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+//获取cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+const Cookie = {
+    setCookie: setCookie,
+    getCookie: getCookie
+}
+
+export default Cookie
+
+```
+
+*app.vue*
+
+```
+<script>
+import Cookie from '../cookie.js'
+export default{
+	data (){
+		return {
+         foo: "bar"
+		}
+	},
+  	methods:{
+		handler() {
+			let token = Cookie.getCookie("token");
+		}
+  	}
+}
+</script>
+
+```
+
+## 组件通信规范
+
 ### Why?
 
 ### How?
 
-## 组件通信规范
-
 ## 合理使用data和props
+
+对组件的数据进行分类，其中组件自身的内部状态是data，从父组件传递而来的数据则是props。对于props，要进行类型的校验，并且限制props的类型为原始类型。
 
 ### Why?
 
@@ -98,7 +159,15 @@ Vuejs的核心理念就是数据驱动的视图。我们在ViewModel中主要做
 
 ## 使用组合进行代码复用
 
+### Why?
+
+### How?
+
 ## 在列表中加入key
+
+### Why?
+
+### How?
 
 ## 分离静态HTML
 
