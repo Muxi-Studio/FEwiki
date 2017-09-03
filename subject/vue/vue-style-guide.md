@@ -1,13 +1,15 @@
 # Vuejs组件风格指南
 
-这篇Wiki是木犀MFE的Vue组件风格指南。首先大家可以看一下这个[Vue.js Component Style Guide](https://github.com/pablohpsilva/vuejs-component-style-guide)，里面的几点。除了这篇文章中讲到的比较普世的规范之外，我们自己在实践中也总结了很多的最佳实践。下面就按Vue.js Component Style Guide的套路来讲一讲这些规范。
+这篇Wiki是木犀MFE的Vuejs组件风格指南。这是我们在经过一段时间的Vuejs开发后得出的一些最佳实践。你可以在阅读本文后，阅读[Vue.js Component Style Guide](https://github.com/pablohpsilva/vuejs-component-style-guide)作为补充。本文的结构就按是Vue.js Component Style Guide来写的，同时也借鉴了一些重要的内容。
 
 ## Table of Contents
 
 * [使用单文件格式定义组件](#使用单文件格式定义组件)
-* [组件命名](#组件命名)
+* [规范组件命名](#规范组件命名)
 * [适中的组件粒度](#适中的组件粒度)
 * [数据驱动，避免直接操作视图](#数据驱动，避免直接操作视图)
+* [规范使用props](#规范使用props)
+* [使用组合进行代码复用](#使用组合进行代码复用)
 
 
 ## 使用单文件格式定义组件
@@ -160,7 +162,7 @@ prop的使用规范主要是：
 + 要进行类型的校验（借助Vuejs提供的props校验）。
 + 限制props的类型为原始类型，避免传入一个配置项hash。
 
-> 这条规范的内容借鉴了
+> 这条规范的内容借鉴了*Vue.js Component Style Guide*中的[Keep component props primitive](https://github.com/pablohpsilva/vuejs-component-style-guide#keep-component-props-primitive)和[Harness your component props](https://github.com/pablohpsilva/vuejs-component-style-guide#harness-your-component-props)两节
 
 ### Why?
 
@@ -271,11 +273,51 @@ export default MenuMixin
 
 ## 分离静态HTML
 
+在**不使用服务端渲染、非单页应用**的场景下，页面中的**纯静态组件**不应该被封装为Vuejs组件，而是应该直接写到页面的服务端模板中。
+
 ### Why?
+
++ 一个产品中，大体的框架，即整个页面的背景，导航栏等等应该都是静态的，动态的Vuejs组件在各个预留的DOM容器中被初始化。将静态内容写到服务端模板有助于First Meaningful Paint时刻的提前，即有助于用户尽早看到应用的内容，并进行交互（这个优点对于服务端渲染是通用的）。
++ 页面从服务端返回的HTML中大体框架不变，而同一个应用中大部分页面的框架都是相似的（都有相同的导航等等），将静态内容写到服务端模板有助于在页面切换时避免FOUSC（Flash of Unstyled Content）现象的发生。不然用户在切换页面时，会看到从空白开始，到整个应用框架渲染直接的内容闪烁。给用户造成不良的体验。
 
 ### How?
 
+*不推荐：用了没有生命周期的Functional Component来声明静态内容组件*
 
+```
+Vue.component('app-nav', {
+  functional: true,
+  render: function (createElement, context) {
+    return <nav>
+             <ul>
+               <li>Nav Item</li>
+               <li>Nav Item</li>
+               <li>Nav Item</li>
+             </ul>
+           </nav>
+  }
+})
+```
+
+
+*推荐：讲静态内容组件写到服务端模板中*
+
+```
+<html>
+<head>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>Nav Item</li>
+      <li>Nav Item</li>
+      <li>Nav Item</li>
+    </ul>
+  </nav> 
+  <div id="app"></div>
+<body>
+</html>
+```
 ## 其他
 
 
