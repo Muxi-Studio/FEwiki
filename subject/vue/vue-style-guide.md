@@ -15,7 +15,7 @@
 * [组件通信规范](#组件通信规范)
 * [使用组合进行代码复用](#使用组合进行代码复用)
 * [在列表渲染中加入key](#在列表渲染中加入key)
-* [分离静态HTML](#分离静态HTML)
+* [分离静态HTML](#分离静态模板)
 * [其他](#其他)
 
 ## 使用单文件格式定义组件
@@ -31,6 +31,8 @@
 ### How?
 
 使用[vue-loader](https://vue-loader.vuejs.org/en/)。这里Vuejs官网中对于Single File Components（单文件组件）的[介绍](https://vuejs.org/v2/guide/single-file-components.html#Introduction)。在团队中，我们使用[ninja](https://github.com/Muxi-Studio/ninja)来初始化项目目录结构，因此你不用太关心项目构建工具的配置。
+
+[↑ back to Table of Contents](#table-of-contents)
 
 ## 规范组件命名
 
@@ -54,6 +56,9 @@
 <feed-add-btn> 
 
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
 ## 适中的组件粒度
 
 在组件化的开发中，有一个很关键的话题就是，什么样的功能模块是应该被拆分成组件的。我们提倡在必要的时候，创建组件。而不是一味的拆分。
@@ -69,6 +74,8 @@
 + 首先将最明显的**通用UI组件**（Modal、表格、菜单、按钮、输入框等等UI库中常见的组件）拆出。这些组件一般不带有特殊的业务逻辑。判断的逻辑就是这个UI组件是否可以跨应用使用，如果可以，那么这个UI组件就属于通用的UI组件。
 + 然后可以根据原型图来拆分页面的**业务逻辑单元**，将一根业务逻辑单元作为一个组件。比如一个微博页面，发微博的逻辑是一个组件，微博的feed流是一个组件，推荐关注是一个组件。
 + 在比较细粒度的组件上，可以先不拆分，在后期觉得单个组件体积过大时，再进行拆分。
+
+[↑ back to Table of Contents](#table-of-contents)
 
 ## 数据驱动，避免直接操作视图
 
@@ -89,6 +96,8 @@ Vuejs的核心理念就是数据驱动的视图。我们在ViewModel中主要做
 ### How?
 
 在Vuejs组件中，有时候我们需要监听一些DOM事件，或者想对DOM节点进行直接的操作，获取一些DOM层面的数据。我们可以使用自定义指令进行DOM操作，可以看Vue的官方文档[Custom Directives](https://vuejs.org/v2/guide/custom-directive.html)，以及[使用Vue Directive封装DOM操作](https://elegenthus.github.io/post/VueDirectivesTest/)这篇博客。
+
+[↑ back to Table of Contents](#table-of-contents)
 
 ## 抽离浏览器API操作
 
@@ -151,6 +160,9 @@ export default{
 
 ```
 
+[↑ back to Table of Contents](#table-of-contents)
+
+
 ## 组件通信规范
 
 **Props down, events up!**
@@ -169,6 +181,7 @@ export default{
 + [父组件监听子组件内部触发的事件](https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Events)
 + [使用全局event bus进行非父子组件的通信](https://vuejs.org/v2/guide/components.html#Non-Parent-Child-Communication)
 
+[↑ back to Table of Contents](#table-of-contents)
 
 ## 规范使用props
 
@@ -229,6 +242,9 @@ prop的使用规范主要是：
 </script>
 ```
 
+[↑ back to Table of Contents](#table-of-contents)
+
+
 ## 使用组合进行代码复用
 
 在前端工程中，代码复用主要是由**组合（Composition）**来达成的。我们在写Vuejs组件时应该时刻注意当前的代码是不是可以通过组合的方式来进行复用。
@@ -284,6 +300,8 @@ export default MenuMixin
 </script>
 ```
 
+[↑ back to Table of Contents](#table-of-contents)
+
 ## 在列表渲染中加入key
 
 
@@ -312,7 +330,9 @@ To give Vue a hint so that it can track each node’s identity, and thus reuse a
 </div>
 ```
 
-## 分离静态HTML
+[↑ back to Table of Contents](#table-of-contents)
+
+## 分离静态模板
 
 在**不使用服务端渲染、非单页应用**的场景下，页面中的**纯静态组件**不应该被封装为Vuejs组件，而是应该直接写到页面的服务端模板中。
 
@@ -360,12 +380,17 @@ Vue.component('app-nav', {
 </html>
 ```
 
+[↑ back to Table of Contents](#table-of-contents)
+
 ## 其他
 
 + 为公共组件编写组件文档。[Document your component API](https://github.com/pablohpsilva/vuejs-component-style-guide#document-your-component-api)
 + 使用CSS Modules作为组件内CSS的Scope。[Vue-loader中相关文档](https://vue-loader.vuejs.org/en/features/css-modules.html)
 + 避免使用`this.$refs`。组件通信可以解决大部分需要用到`this.$refs`的场景。其余的DOM操作相关的场景可以用自定义指令解决。所以如果你发现自己需要用到`this.$refs`，请在群里讨论。[Use this.$refs with caution](https://github.com/pablohpsilva/vuejs-component-style-guide#use-thisrefs-with-caution)。
 + 避免使用`this.$parent`。和上一条同理。[Avoid this.$parent](https://github.com/pablohpsilva/vuejs-component-style-guide#avoid-thisparent)。
+
+[↑ back to Table of Contents](#table-of-contents)
+
 
 **感谢阅读，用Vuejs打造用户界面吧！**
 
