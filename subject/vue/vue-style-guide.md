@@ -1,5 +1,7 @@
 # Vuejs组件风格指南
 
+> 2017年9月 第一版
+
 这篇Wiki是木犀MFE的Vuejs组件风格指南。这是我们在经过一段时间的Vuejs开发后得出的一些最佳实践。你可以在阅读本文后，阅读[Vue.js Component Style Guide](https://github.com/pablohpsilva/vuejs-component-style-guide)作为补充。本文的结构就按是Vue.js Component Style Guide来写的，同时也借鉴了一些重要的内容。
 
 ## Table of Contents
@@ -8,9 +10,13 @@
 * [规范组件命名](#规范组件命名)
 * [适中的组件粒度](#适中的组件粒度)
 * [数据驱动，避免直接操作视图](#数据驱动，避免直接操作视图)
+* [抽离浏览器API操作](#抽离浏览器API操作)
 * [规范使用props](#规范使用props)
+* [组件通信规范](#组件通信规范)
 * [使用组合进行代码复用](#使用组合进行代码复用)
-
+* [在列表渲染中加入key](#在列表渲染中加入key)
+* [分离静态HTML](#分离静态HTML)
+* [其他](#其他)
 
 ## 使用单文件格式定义组件
 
@@ -147,9 +153,22 @@ export default{
 
 ## 组件通信规范
 
+**Props down, events up!**
+
+在父组件向子组件传递数据时，使用props。子组件需要通知父组件时，使用组件的事件。非相邻的组件，使用全局的event bus进行通信。
+
 ### Why?
 
++ 我们拆分组件的目的就是为了代码的解耦。因此组件之间通信也必须使用一种松散的通信方式，而不是`this.$parent`那样高度耦合的方式。
++ Props down, events up的方式，相当于给组件定义了一套API。在有文档的情况下，调用起来非常清晰。
++ Event Emitter模式可以很好的解决三层以上的事件传播。详见[使用EventEmitter2（观察者模式）构建前端应用（一）](https://github.com/livoras/blog/issues/6)。
+
 ### How?
+
++ [父组件传入props给子组件](https://vuejs.org/v2/guide/components.html#Passing-Data-with-Props)
++ [父组件监听子组件内部触发的事件](https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Events)
++ [使用全局event bus进行非父子组件的通信](https://vuejs.org/v2/guide/components.html#Non-Parent-Child-Communication)
+
 
 ## 规范使用props
 
@@ -227,7 +246,7 @@ prop的使用规范主要是：
 ### Why?
 
 + [Composition over Inheritance](https://www.youtube.com/watch?v=wfMtDGfHWpA)
-+ 更具体的理由有待大家补充。React和Vue都非常提倡组合，React还有高阶组件那样的大杀器。所以我认为Composition over Inheritance在UI开发中是有实际的工程意义的。
++ 更具体的理由有待大家补充。React和Vue都非常提倡组合，React还有高阶组件那样的大杀器。所以我认为Composition over Inheritance在UI开发中是有实际的工程意义的。附上React文档里的[Composition vs Inheritance](https://facebook.github.io/react/docs/composition-vs-inheritance.html)。
 
 ### How?
 
@@ -265,11 +284,33 @@ export default MenuMixin
 </script>
 ```
 
-## 在列表中加入key
+## 在列表渲染中加入key
+
+
+在使用`v-for`进行列表渲染或是使用`<transition>`进行多个相同标签DOM元素的切换时，尽可能的给这些元素提供一个key。
+
 
 ### Why?
 
+具体请看Vuejs文档中[有关的内容](https://vuejs.org/v2/guide/list.html#key)，其中的重点是：
+
+```
+This default mode is efficient, but only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values).
+
+To give Vue a hint so that it can track each node’s identity, and thus reuse and reorder existing elements, you need to provide a unique key attribute for each item.
+```
+
+如果不提供key，那列表渲染时就可能会出现元素的input**状态丢失**等等情况。这一般来说不是我们所期望的。`<transition>`多个相同标签的DOM元素也会失效。
+
+> 列表渲染中如何识别追踪之前的元素，并且在下一次的渲染中保留之前元素的DOM节点的对应关系，是MVVM组件库的一个常见的问题。React中也需要使用key来达到元素的追踪。
+
 ### How?
+
+```
+<div v-for="item in items" :key="item.id">
+  <!-- content -->
+</div>
+```
 
 ## 分离静态HTML
 
@@ -300,7 +341,7 @@ Vue.component('app-nav', {
 ```
 
 
-*推荐：讲静态内容组件写到服务端模板中*
+*推荐：将静态内容组件写到服务端模板中*
 
 ```
 <html>
@@ -318,8 +359,14 @@ Vue.component('app-nav', {
 <body>
 </html>
 ```
+
 ## 其他
 
++ 为公共组件编写组件文档。[Document your component API](https://github.com/pablohpsilva/vuejs-component-style-guide#document-your-component-api)
++ 使用CSS Modules作为组件内CSS的Scope。[Vue-loader中相关文档](https://vue-loader.vuejs.org/en/features/css-modules.html)
++ 避免使用`this.$refs`。组件通信可以解决大部分需要用到`this.$refs`的场景。其余的DOM操作相关的场景可以用自定义指令解决。所以如果你发现自己需要用到`this.$refs`，请在群里讨论。[Use this.$refs with caution](https://github.com/pablohpsilva/vuejs-component-style-guide#use-thisrefs-with-caution)。
++ 避免使用`this.$parent`。和上一条同理。[Avoid this.$parent](https://github.com/pablohpsilva/vuejs-component-style-guide#avoid-thisparent)。
 
+**感谢阅读，用Vuejs打造用户界面吧！**
 
 

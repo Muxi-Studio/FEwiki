@@ -42,15 +42,20 @@
 + [前端MVC框架设计-以Backbone为例](https://github.com/jsrebuild/javascript-framework-design)
 + [前端MVVM框架设计-以Vuejs为例](https://github.com/jsrebuild/build-your-own-vuejs)
 
+#### Vuejs
+
++ [Vuejs组件风格指南](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/vue/vue-style-guide.md)
++ [`.vue`文件的Sublime插件配置]()
++ [在Vue-loader中使用CSS Modules](http://zxc0328.github.io/2016/11/29/timeline/)
+
 
 #### Mini Tip
 
-+ [`.vue`文件的Sublime插件配置]()
-+ [在Vue-loader中使用CSS Modules](http://zxc0328.github.io/2016/11/29/timeline/)
 + [关于Chrome Devtools的Timeline](http://zxc0328.github.io/2016/11/29/timeline/)
 + [vertical-align专题](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/vertical-align.md)
 + [Retina屏幕1px的实现](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/Retina%E5%B1%8F%E5%B9%951px%E7%9A%84%E5%AE%9E%E7%8E%B0.md)
 
 
 #### Tutorial
+
 + [react不完全指南](https://github.com/Muxi-Studio/FEwiki/blob/master/tutorial/react/)
