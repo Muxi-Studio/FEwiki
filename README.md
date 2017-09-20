@@ -55,6 +55,9 @@
 + [vertical-align专题](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/vertical-align.md)
 + [Retina屏幕1px的实现](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/Retina%E5%B1%8F%E5%B9%951px%E7%9A%84%E5%AE%9E%E7%8E%B0.md)
 
+#### Components
++ [手把手实现一个ColorPicker组件](http://stephenliu.site/2017/09/13/A-color-picker-from-the-scratch/)
++ [实现一个滚动page导航组件](https://github.com/stephenLYao/Doooosth/blob/gh-pages/scroll-pages/index.html)
 
 #### Tutorial
 
