@@ -54,6 +54,7 @@
 + [关于Chrome Devtools的Timeline](http://zxc0328.github.io/2016/11/29/timeline/)
 + [vertical-align专题](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/vertical-align.md)
 + [Retina屏幕1px的实现](https://github.com/Muxi-Studio/FEwiki/blob/master/minitip/Retina%E5%B1%8F%E5%B9%951px%E7%9A%84%E5%AE%9E%E7%8E%B0.md)
++ [Promise的基本实现](http://stephenliu.site/2017/07/06/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise/)
 
 #### Components
 + [手把手实现一个ColorPicker组件](http://stephenliu.site/2017/09/13/A-color-picker-from-the-scratch/)
