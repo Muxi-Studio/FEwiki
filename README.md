@@ -17,8 +17,8 @@
 + 前端业务的典型类型与技术选型
 + 木犀前端代码规范
 + 前后端分离开发
- + 木犀前后端分离方案（鹊桥）
- + 木犀前端工具-本地开发容器（Ninja）
+  + 木犀前后端分离方案（鹊桥）
+  + [木犀前端工具-本地开发容器（Ninja）](https://github.com/Muxi-Studio/ninja)
 + [推荐的CSS布局方案](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/css-layout.md)
 + 浏览器渲染引擎和JavaScript引擎相关
 + [前端框架设计（Vue, React, Angular）](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/fe-framework.md)
@@ -27,7 +27,7 @@
   + JavaScript性能优化
   + 应用性能优化
 + 如何部署前端代码（前端自动化部署）
-+ 前端资源和书籍
++ [前端资源和书籍](https://github.com/Muxi-Studio/awesome_fe)
 + JavaScript与函数式编程
 + 如何阅读CSS与ECMAScript规范
 + Promise+Fetch专题
