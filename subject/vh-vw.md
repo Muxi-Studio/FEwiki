@@ -12,7 +12,7 @@
 
 目前移动设备浏览器上常用的内核有 Webkit，Blink，Trident，Gecko 等，其中 iPhone 和 iPad 等苹果 iOS 平台主要是 WebKit，Android 4.4 之前的 Android 系统浏览器内核是 WebKit，Android4.4 系统浏览器切换到了Chromium，内核是 Webkit 的分支 Blink，Windows Phone 8 系统浏览器内核是 Trident。
 
-![移动端浏览器](./testImg/mobile.png)
+![移动端浏览器](https://wx1.sinaimg.cn/mw1024/006P0MECgy1fkhtzywjekj30t40nd0v0.jpg)
 以下有一些比较常用的移动端浏览器
 
 - QQ浏览器-(X5内核)
@@ -64,14 +64,14 @@ QQ浏览器
  - vmax：vh，vw中最大值
  - vmin：vh，vw中最小值
 
-![mean](./testImg/mean.png)
+![mean](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtzyomucj30dt04qjrq.jpg)
 
 **“视区”所指为浏览器内部的可视区域大小，即window.innerWidth/window.innerHeight大小，包含滚动条宽度，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。**
 
 
 ### 五、支持各种长度相关属性的浏览器版本
 
-![版本](./testImg/banben.png)
+![版本](https://wx4.sinaimg.cn/mw1024/006P0MECgy1fkhtxzqs4pj310d0au0tr.jpg)
 
 如果你想知道得更多更详细的兼容，请戳这里[caniuse](https://caniuse.com/#search=vh)
 
@@ -95,11 +95,11 @@ QQ浏览器
 **1. 当你需要元素始终占满浏览器可视区，并且不超过可视区时。比如遮罩层（在做弹出层的时候用得比较多）。**
 
 ## 代码：
-![代码](./testImg/code.png)
+![代码](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtxzx4bkj30an096q35.jpg)
 
 ## 图片：
 
-![有边距](./testImg/havePadding.png)
+![有边距](https://wx3.sinaimg.cn/mw1024/006P0MECgy1fkhtzyf9fdj30av0j4q2u.jpg)
 
 
 
@@ -138,7 +138,7 @@ vw可以解决这个问题，代码如下:
 
 效果：
 
-![test](./testImg/test1.png)
+![test](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtzypwa1j307k0cxa9y.jpg)
 
 **3. 响应式文字**
 
@@ -146,11 +146,11 @@ vw可以解决这个问题，代码如下:
 
 ## 代码：
 
-![code](./testImg/code2.png)
+![code](https://wx4.sinaimg.cn/mw1024/006P0MECgy1fkhtxzzf1ij30ev0fu3zr.jpg)
 
 ## 效果:
-![bigword](./testImg/bigword.png)
-![smallword](./testImg/smallword.png)
+![bigword](https://wx3.sinaimg.cn/mw1024/006P0MECgy1fkhtxzp90xj30tx0h1dg2.jpg)
+![smallword](https://wx4.sinaimg.cn/mw1024/006P0MECgy1fkhtzyq8ixj30j1078glj.jpg)
 
 可以看到当浏览器宽度改变时，百分比中的文字宽度没有发生变化，而统一使用vw做单位的Demo中文字的大小按缩放比例发生了变化，这正是我们想要的“像图片一样布局”的效果。这时我们称它为流体字号，英文称Fluid Typography
 
@@ -161,11 +161,11 @@ vw可以解决这个问题，代码如下:
 
 ## 代码：
 
-![code](./testImg/code3.png)
+![code](https://wx4.sinaimg.cn/mw1024/006P0MECgy1fkhtzyldruj30c70e63zb.jpg)
 
 ## 效果:
-![bigword](./testImg/bigper.png)
-![smallword](./testImg/smallper.png)
+![bigword](https://wxt.sinaimg.cn/mw1024/006P0MECgy1fkhtxzqklej30o40hzgm9.jpg?tags=%5B%5D)
+![smallword](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtzytsidj30iv0c5wf3.jpg)
 
 在这个例子中，父容器的宽高都是100vw即子元素百分比的根据是一样的，效果是子元素的宽高比永远是1:1。
 
@@ -177,11 +177,11 @@ vw可以解决这个问题，代码如下:
 比如：用vw,vh实现一个在任何屏幕尺寸下都能垂直居中的元素。
 
 ## 代码：
-![centerCode](./testImg/centerCode.png)
+![centerCode](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtxzx7jrj30cy0dujs2.jpg)
 
 ## 效果：
-![center1](./testImg/center1.png)
-![center3](./testImg/center3.png)
+![center1](https://wx3.sinaimg.cn/mw1024/006P0MECgy1fkhtxzpibij30fb0pqt8u.jpg)
+![center3](https://wx2.sinaimg.cn/mw1024/006P0MECgy1fkhtxzonihj30fc0kedfw.jpg)
 
 ## 总结：
 
