@@ -16,6 +16,7 @@
 + [木犀前端团队（MFE）基本情况](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/muxife.md)
 + [Web前端简介](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/feIntro.md)
 + [知名前端博客](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/blog.md)
++ [前端方向介绍-数字媒体](https://github.com/Muxi-Studio/FEwiki/blob/master/subject/fe-path-digital-media.md)
 + 前端业务的典型类型与技术选型
 + 木犀前端代码规范
 + 前后端分离开发
