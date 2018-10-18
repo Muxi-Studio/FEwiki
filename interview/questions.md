@@ -1,6 +1,6 @@
 # 问题搜集
 
-## Github
+## GitHub
 
 * [CS-Interview-Knowledge-Map/JS](https://github.com/InterviewMap/CS-Interview-Knowledge-Map/blob/master/JS/JS-ch.md)
 * [Front-end-Developer-Interview-Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)
