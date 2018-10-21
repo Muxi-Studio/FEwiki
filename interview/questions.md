@@ -17,3 +17,14 @@
 * [GitHub - kennymkchan/interview-questions-in-javascript: A mostly reasonable collection of technical software development interview questions solved in Javascript](https://github.com/kennymkchan/interview-questions-in-javascript)
 * [js-interview-review](https://github.com/adam-s/js-interview-review)
 * [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
+* [前端面试手册](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Chinese/README.md)
+
+## 知乎
+-  [破解前端面试（80% 应聘者不及格系列）：从 闭包说起
+](https://zhuanlan.zhihu.com/p/25855075)
+- [前端面试之js相关问题（一）](https://zhuanlan.zhihu.com/p/22109292)
+- [饥人谷2018前端面试押题（讲义）](https://zhuanlan.zhihu.com/p/34536462)
+- [前端面试指南](https://www.zhihu.com/search?q=%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95&type=content)
+- [前端面试知识点总结](https://zhuanlan.zhihu.com/p/22606894)
+- [2017年第一波JavaScript前端面试题](https://zhuanlan.zhihu.com/p/25424194)
+- [新鲜出炉的8月前端面试题](https://zhuanlan.zhihu.com/p/41479807)
