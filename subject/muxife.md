@@ -38,6 +38,7 @@
 + [KuTuGu](https://github.com/KuTuGu)
 + [darkglimmer](https://github.com/darkglimmer)
 + [yanyuw](https://github.com/yanyuw)
++ [wwyqianqian](https://github.com/wwyqianqian)
 
 #### 2016 级
 
